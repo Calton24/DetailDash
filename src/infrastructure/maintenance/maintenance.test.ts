@@ -124,7 +124,7 @@ describe("maintenance proxy — local override", () => {
     });
 
     expect(mockAsyncStorage.setItem).toHaveBeenCalledWith(
-      "@mobile_core/maintenance_override",
+      "@detaildash/maintenance_override",
       expect.stringContaining('"mode":"read_only"')
     );
   });
@@ -133,7 +133,7 @@ describe("maintenance proxy — local override", () => {
     await maintenance.setLocalOverride(null);
 
     expect(mockAsyncStorage.removeItem).toHaveBeenCalledWith(
-      "@mobile_core/maintenance_override"
+      "@detaildash/maintenance_override"
     );
   });
 });

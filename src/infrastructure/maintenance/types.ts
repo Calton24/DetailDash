@@ -71,10 +71,10 @@ export const DEFAULT_MAINTENANCE_STATE: MaintenanceState = {
 };
 
 /** AsyncStorage key for caching last successful remote state */
-export const MAINTENANCE_CACHE_KEY = "@mobile_core/maintenance_state";
+export const MAINTENANCE_CACHE_KEY = "@detaildash/maintenance_state";
 
 /** AsyncStorage key for local override */
-export const MAINTENANCE_OVERRIDE_KEY = "@mobile_core/maintenance_override";
+export const MAINTENANCE_OVERRIDE_KEY = "@detaildash/maintenance_override";
 
 /** Valid mode values for runtime validation */
 export const VALID_MODES: MaintenanceMode[] = [

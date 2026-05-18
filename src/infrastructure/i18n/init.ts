@@ -56,7 +56,7 @@ export const LANGUAGE_LABELS: Record<SupportedLanguage, string> = {
 };
 
 const FALLBACK_LANGUAGE: SupportedLanguage = "en";
-const STORAGE_KEY = "mobile_core_i18n_language";
+const STORAGE_KEY = "detaildash_i18n_language";
 
 const resources = {
   en: { common: en },

@@ -11,7 +11,9 @@ const getConfig = (): any => {
   // During build time, we need to load config differently
   // Use process.env directly since Constants.expoConfig isn't available yet
   const appProfile =
-    process.env.EXPO_PUBLIC_APP_PROFILE || process.env.APP_PROFILE || "intake";
+    process.env.EXPO_PUBLIC_APP_PROFILE ||
+    process.env.APP_PROFILE ||
+    "detaildash";
   const appEnv =
     process.env.EXPO_PUBLIC_APP_ENV || process.env.APP_ENV || "dev";
 

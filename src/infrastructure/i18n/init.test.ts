@@ -78,7 +78,7 @@ describe("initI18n", () => {
     jest.doMock("../../config", () => ({
       getAppConfig: () => ({
         features: { i18n: false },
-        profile: "intake",
+        profile: "detaildash",
       }),
     }));
 

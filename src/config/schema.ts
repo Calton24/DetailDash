@@ -9,8 +9,8 @@ export const AppEnvironmentSchema = z.enum(["dev", "staging", "prod"], {
   message: "APP_ENV must be one of: dev, staging, prod",
 });
 
-export const AppProfileSchema = z.enum(["intake", "default"], {
-  message: "APP_PROFILE must be one of: intake, default",
+export const AppProfileSchema = z.enum(["detaildash", "default"], {
+  message: "APP_PROFILE must be one of: detaildash, default",
 });
 
 /**

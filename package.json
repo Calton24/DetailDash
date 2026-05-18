@@ -1,5 +1,5 @@
 {
-  "name": "mobile-core",
+  "name": "detaildash",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -15,7 +15,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:edge": "deno test --config supabase/functions/deno.json --allow-env --allow-net supabase/functions/**/*.test.ts",
-    "typecheck": "tsc --noEmit",
+    "expo:types": "node scripts/ensure-expo-router-types.mjs",
+    "typecheck": "node scripts/ensure-expo-router-types.mjs && tsc --noEmit",
     "typecheck:edge": "deno check --config supabase/functions/deno.json supabase/functions/create-checkout-session/index.ts supabase/functions/stripe-webhook/index.ts",
     "check": "npm run typecheck && npm run typecheck:edge",
     "check:edge": "npm run typecheck:edge",

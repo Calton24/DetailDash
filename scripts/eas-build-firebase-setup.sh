@@ -6,7 +6,7 @@
 set -e
 
 APP_ENV="${EXPO_PUBLIC_APP_ENV:-prod}"
-APP_PROFILE="${EXPO_PUBLIC_APP_PROFILE:-intake}"
+APP_PROFILE="${EXPO_PUBLIC_APP_PROFILE:-detaildash}"
 
 echo "🔥 Firebase Setup for $APP_PROFILE / $APP_ENV"
 echo "================================================"

@@ -9,10 +9,10 @@
       "distribution": "internal"
     },
 
-    "intake-dev": {
+    "detaildash-dev": {
       "extends": "development",
       "env": {
-        "EXPO_PUBLIC_APP_PROFILE": "intake",
+        "EXPO_PUBLIC_APP_PROFILE": "detaildash",
         "EXPO_PUBLIC_APP_ENV": "dev"
       },
       "prebuildCommand": "./scripts/eas-build-firebase-setup.sh",
@@ -24,52 +24,27 @@
       }
     },
 
-    "intake-staging": {
+    "detaildash-staging": {
       "extends": "development",
       "distribution": "internal",
       "env": {
-        "EXPO_PUBLIC_APP_PROFILE": "intake",
+        "EXPO_PUBLIC_APP_PROFILE": "detaildash",
         "EXPO_PUBLIC_APP_ENV": "staging"
       },
       "prebuildCommand": "./scripts/eas-build-firebase-setup.sh"
     },
 
-    "intake-prod": {
+    "detaildash-prod": {
       "distribution": "store",
       "env": {
-        "EXPO_PUBLIC_APP_PROFILE": "intake",
+        "EXPO_PUBLIC_APP_PROFILE": "detaildash",
         "EXPO_PUBLIC_APP_ENV": "prod"
       },
-      "prebuildCommand": "./scripts/eas-build-firebase-setup.sh",
-      "ios": {
-        "simulator": false
-      }
-    },
-
-    "preview": {
-      "distribution": "internal",
-      "channel": "preview",
-      "ios": {
-        "simulator": true,
-        "buildConfiguration": "Release"
-      },
-      "android": {
-        "buildType": "apk"
-      }
+      "prebuildCommand": "./scripts/eas-build-firebase-setup.sh"
     }
   },
 
   "submit": {
-    "production": {
-      "ios": {
-        "appleId": "your-apple-id@example.com",
-        "ascAppId": "your-app-store-connect-app-id",
-        "appleTeamId": "your-team-id"
-      },
-      "android": {
-        "serviceAccountKeyPath": "./secrets/google-play-service-account.json",
-        "track": "production"
-      }
-    }
+    "detaildash-prod": {}
   }
 }

@@ -1,93 +1,52 @@
 /**
- * App Profiles for Expo Config
- * Plain JS file so it can be require()'d by app.config.ts at build time
- *
- * This is a DUPLICATE of the TypeScript profiles for build-time use only.
- * The source of truth is still the TypeScript files in ./profiles/
+ * App Profiles for Expo Config (build-time)
  */
 
 const APP_PROFILES = {
   default: {
     app: {
-      name: "Mobile Core",
-      slug: "mobile-core",
-      bundleIdentifier: "com.calton24.mobilecore",
-      androidPackage: "com.calton24.mobilecore",
+      name: "DetailDash",
+      slug: "detaildash",
+      bundleIdentifier: "com.calton.detaildash",
+      androidPackage: "com.calton.detaildash",
       version: "1.0.0",
-      scheme: "mobilecore",
+      scheme: "detaildash",
     },
     environments: {
       dev: {
         app: {
-          name: "Mobile Core Dev",
-          slug: "mobile-core-dev",
-          bundleIdentifier: "com.calton24.mobilecore.dev",
-          androidPackage: "com.calton24.mobilecore.dev",
+          name: "DetailDash",
+          slug: "detaildash-dev",
         },
       },
       staging: {
         app: {
-          name: "Mobile Core Staging",
-          bundleIdentifier: "com.calton24.mobilecore.staging",
-          androidPackage: "com.calton24.mobilecore.staging",
+          name: "DetailDash Staging",
         },
       },
       prod: {},
     },
   },
 
-  intake: {
+  detaildash: {
     app: {
-      name: "Mobile Core",
-      slug: "mobile-core",
-      bundleIdentifier: "com.calton24.mobilecore",
-      androidPackage: "com.calton24.mobilecore",
+      name: "DetailDash",
+      slug: "detaildash",
+      bundleIdentifier: "com.calton.detaildash",
+      androidPackage: "com.calton.detaildash",
       version: "1.0.0",
-      scheme: "intake",
+      scheme: "detaildash",
     },
     environments: {
       dev: {
         app: {
-          name: "Mobile Core",
-          slug: "mobile-core-dev",
-          bundleIdentifier: "com.calton24.mobilecore.dev",
-          androidPackage: "com.calton24.mobilecore.dev",
+          name: "DetailDash",
+          slug: "detaildash-dev",
         },
       },
       staging: {
         app: {
-          name: "Intake Staging",
-          bundleIdentifier: "com.yourcompany.intake.staging",
-          androidPackage: "com.yourcompany.intake.staging",
-        },
-      },
-      prod: {},
-    },
-  },
-
-  proxi: {
-    app: {
-      name: "Proxi",
-      slug: "proxi-mobile",
-      bundleIdentifier: "com.yourcompany.proxi",
-      androidPackage: "com.yourcompany.proxi",
-      version: "1.0.0",
-      scheme: "proxi",
-    },
-    environments: {
-      dev: {
-        app: {
-          name: "Proxi Dev",
-          slug: "proxi-app-dev",
-          bundleIdentifier: "com.yourcompany.proxi.dev",
-          androidPackage: "com.yourcompany.proxi.dev",
-        },
-      },
-      staging: {
-        app: {
-          name: "Proxi Staging",
-          bundleIdentifier: "com.yourcompany.proxi.staging",
-          androidPackage: "com.yourcompany.proxi.staging",
+          name: "DetailDash Staging",
         },
       },
       prod: {},
