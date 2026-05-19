@@ -3,8 +3,8 @@ import {
     ContextMenu,
     HStack,
     Section,
-    Switch,
     Text,
+    Toggle,
     VStack,
 } from "@expo/ui/swift-ui";
 import {
@@ -43,36 +43,32 @@ export function ContextMenuSection() {
           </ContextMenu.Trigger>
           <ContextMenu.Items>
             <Button
+              label="Add to Favorites"
               systemImage="star.fill"
               onPress={() => setLastAction("Favorite")}
-            >
-              Add to Favorites
-            </Button>
+            />
             <Button
+              label="Share"
               systemImage="square.and.arrow.up"
               onPress={() => setLastAction("Share")}
-            >
-              Share
-            </Button>
+            />
             <Button
+              label="Copy"
               systemImage="doc.on.doc"
               onPress={() => setLastAction("Copy")}
-            >
-              Copy
-            </Button>
-            <Switch
+            />
+            <Toggle
               value={showCompleted}
               label="Show Completed"
               variant="checkbox"
               onValueChange={setShowCompleted}
             />
             <Button
+              label="Delete"
               systemImage="trash"
-              role="destructive"
+              variant="destructive"
               onPress={() => setLastAction("Delete")}
-            >
-              Delete
-            </Button>
+            />
           </ContextMenu.Items>
         </ContextMenu>
 
@@ -92,21 +88,21 @@ export function ContextMenuSection() {
             </HStack>
           </ContextMenu.Trigger>
           <ContextMenu.Items>
-            <Button systemImage="pencil" onPress={() => setLastAction("Edit")}>
-              Edit
-            </Button>
             <Button
+              label="Edit"
+              systemImage="pencil"
+              onPress={() => setLastAction("Edit")}
+            />
+            <Button
+              label="Refresh"
               systemImage="arrow.clockwise"
               onPress={() => setLastAction("Refresh")}
-            >
-              Refresh
-            </Button>
+            />
             <Button
+              label="Get Info"
               systemImage="info.circle"
               onPress={() => setLastAction("Info")}
-            >
-              Get Info
-            </Button>
+            />
           </ContextMenu.Items>
         </ContextMenu>
 

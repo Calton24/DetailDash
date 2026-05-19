@@ -1,8 +1,7 @@
 import {
     Button,
-    CircularProgress,
     HStack,
-    LinearProgress,
+    ProgressView,
     Section,
     Text,
     VStack,
@@ -34,15 +33,9 @@ export function ProgressSection() {
         </Text>
         <HStack spacing={24}>
           <VStack spacing={4} alignment="center">
-            <CircularProgress modifiers={[frame({ width: 40, height: 40 })]} />
+            <ProgressView modifiers={[frame({ width: 120 })]} />
             <Text size={10} color="gray">
-              Circular
-            </Text>
-          </VStack>
-          <VStack spacing={4} alignment="center">
-            <LinearProgress modifiers={[frame({ width: 120 })]} />
-            <Text size={10} color="gray">
-              Linear
+              Indeterminate
             </Text>
           </VStack>
         </HStack>
@@ -52,57 +45,31 @@ export function ProgressSection() {
         </Text>
         <HStack spacing={24}>
           <VStack spacing={4} alignment="center">
-            <CircularProgress
-              progress={progress}
-              color="blue"
-              modifiers={[frame({ width: 50, height: 50 })]}
+            <ProgressView
+              value={progress}
+              modifiers={[frame({ width: 150 })]}
             />
             <Text
               size={10}
               color="gray"
             >{`${Math.round(progress * 100)}%`}</Text>
           </VStack>
-          <VStack spacing={4}>
-            <LinearProgress
-              progress={progress}
-              color="green"
-              modifiers={[frame({ width: 150 })]}
-            />
-            <Text size={10} color="gray">
-              Linear Progress
-            </Text>
-          </VStack>
         </HStack>
 
         <Text size={14} color="gray">
-          Custom Colors
+          Multiple Progress Bars
         </Text>
-        <HStack spacing={16}>
-          <CircularProgress
-            progress={0.3}
-            color="red"
-            modifiers={[frame({ width: 40, height: 40 })]}
-          />
-          <CircularProgress
-            progress={0.5}
-            color="orange"
-            modifiers={[frame({ width: 40, height: 40 })]}
-          />
-          <CircularProgress
-            progress={0.7}
-            color="green"
-            modifiers={[frame({ width: 40, height: 40 })]}
-          />
-          <CircularProgress
-            progress={0.9}
-            color="blue"
-            modifiers={[frame({ width: 40, height: 40 })]}
-          />
-        </HStack>
+        <VStack spacing={12}>
+          <ProgressView value={0.3} modifiers={[frame({ width: 200 })]} />
+          <ProgressView value={0.5} modifiers={[frame({ width: 200 })]} />
+          <ProgressView value={0.7} modifiers={[frame({ width: 200 })]} />
+          <ProgressView value={0.9} modifiers={[frame({ width: 200 })]} />
+        </VStack>
 
-        <Button onPress={() => setIsAnimating(!isAnimating)}>
-          {isAnimating ? "Pause Animation" : "Resume Animation"}
-        </Button>
+        <Button
+          label={isAnimating ? "Pause Animation" : "Resume Animation"}
+          onPress={() => setIsAnimating(!isAnimating)}
+        />
       </VStack>
     </Section>
   );

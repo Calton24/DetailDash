@@ -2,8 +2,8 @@ import {
     DisclosureGroup,
     Section,
     Slider,
-    Switch,
     Text,
+    Toggle,
     VStack,
 } from "@expo/ui/swift-ui";
 import React, { useState } from "react";
@@ -31,12 +31,12 @@ export function DisclosureGroupSection() {
           onStateChange={setIsExpanded1}
         >
           <VStack spacing={8}>
-            <Switch
+            <Toggle
               value={notifications}
               label="Push Notifications"
               onValueChange={setNotifications}
             />
-            <Switch
+            <Toggle
               value={darkMode}
               label="Dark Mode"
               onValueChange={setDarkMode}

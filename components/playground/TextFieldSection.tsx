@@ -64,13 +64,12 @@ export function TextFieldSection() {
         </Text>
 
         <Button
+          label="Submit Form"
           variant="bordered"
           onPress={() => {
             console.log({ name, email, phone, bio });
           }}
-        >
-          Submit Form
-        </Button>
+        />
       </VStack>
     </Section>
   );

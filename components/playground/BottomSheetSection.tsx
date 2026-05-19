@@ -3,8 +3,8 @@ import {
     Button,
     Section,
     Slider,
-    Switch,
     Text,
+    Toggle,
     VStack,
 } from "@expo/ui/swift-ui";
 import React, { useState } from "react";
@@ -23,13 +23,17 @@ export function BottomSheetSection() {
           Sheet Sizes
         </Text>
 
-        <Button onPress={() => setIsOpened(true)}>Open Medium Sheet</Button>
+        <Button label="Open Medium Sheet" onPress={() => setIsOpened(true)} />
 
-        <Button onPress={() => setIsLargeOpened(true)}>Open Large Sheet</Button>
+        <Button
+          label="Open Large Sheet"
+          onPress={() => setIsLargeOpened(true)}
+        />
 
-        <Button onPress={() => setIsCustomOpened(true)}>
-          Open Custom Height (40%)
-        </Button>
+        <Button
+          label="Open Custom Height (40%)"
+          onPress={() => setIsCustomOpened(true)}
+        />
 
         {/* Medium Sheet */}
         <BottomSheet
@@ -45,7 +49,7 @@ export function BottomSheetSection() {
             <Text size={14} color="gray">
               This is a medium-sized bottom sheet. You can add any content here.
             </Text>
-            <Switch
+            <Toggle
               value={sheetToggle}
               label="Toggle Option"
               onValueChange={setSheetToggle}
@@ -55,11 +59,10 @@ export function BottomSheetSection() {
               {`Slider value: ${sheetValue.toFixed(2)}`}
             </Text>
             <Button
+              label="Close Sheet"
               variant="borderedProminent"
               onPress={() => setIsOpened(false)}
-            >
-              Close Sheet
-            </Button>
+            />
           </VStack>
         </BottomSheet>
 
@@ -81,9 +84,11 @@ export function BottomSheetSection() {
             <Text size={14} color="gray">
               You can scroll down for more content...
             </Text>
-            <Button variant="bordered" onPress={() => setIsLargeOpened(false)}>
-              Dismiss
-            </Button>
+            <Button
+              label="Dismiss"
+              variant="bordered"
+              onPress={() => setIsLargeOpened(false)}
+            />
           </VStack>
         </BottomSheet>
 
@@ -102,9 +107,11 @@ export function BottomSheetSection() {
               This sheet starts at 40% height but can be dragged to medium or
               large.
             </Text>
-            <Button role="destructive" onPress={() => setIsCustomOpened(false)}>
-              Close
-            </Button>
+            <Button
+              label="Close"
+              role="destructive"
+              onPress={() => setIsCustomOpened(false)}
+            />
           </VStack>
         </BottomSheet>
       </VStack>
