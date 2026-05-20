@@ -64,6 +64,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     icon: "./assets/images/icon.png",
     scheme: appConfig.scheme,
     userInterfaceStyle: "automatic",
+    // @ts-ignore - newArchEnabled is not in ExpoConfig type yet
     newArchEnabled: true,
 
     ios: {
@@ -116,7 +117,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     ],
 
     experiments: {
-      typedRoutes: true,
+      typedRoutes: false,
     },
 
     // Pass config to runtime via extra

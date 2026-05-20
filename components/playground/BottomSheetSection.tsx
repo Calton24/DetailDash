@@ -7,7 +7,7 @@ import {
     Toggle,
     VStack,
 } from "@expo/ui/swift-ui";
-import React, { useState } from "react";
+import { useState } from "react";
 
 export function BottomSheetSection() {
   const [isOpened, setIsOpened] = useState(false);
@@ -37,27 +37,23 @@ export function BottomSheetSection() {
 
         {/* Medium Sheet */}
         <BottomSheet
-          isOpened={isOpened}
-          onIsOpenedChange={setIsOpened}
+          isPresented={isOpened}
+          onIsPresentedChange={setIsOpened}
           presentationDetents={["medium"]}
           presentationDragIndicator="visible"
         >
           <VStack spacing={16}>
-            <Text size={20} weight="bold">
-              Medium Sheet
-            </Text>
-            <Text size={14} color="gray">
+            <Text>Medium Sheet</Text>
+            <Text>
               This is a medium-sized bottom sheet. You can add any content here.
             </Text>
             <Toggle
-              value={sheetToggle}
+              isOn={sheetToggle}
               label="Toggle Option"
-              onValueChange={setSheetToggle}
+              onIsOnChange={setSheetToggle}
             />
             <Slider value={sheetValue} onValueChange={setSheetValue} />
-            <Text size={12} color="gray">
-              {`Slider value: ${sheetValue.toFixed(2)}`}
-            </Text>
+            <Text>{`Slider value: ${sheetValue.toFixed(2)}`}</Text>
             <Button
               label="Close Sheet"
               variant="borderedProminent"
@@ -68,22 +64,18 @@ export function BottomSheetSection() {
 
         {/* Large Sheet */}
         <BottomSheet
-          isOpened={isLargeOpened}
-          onIsOpenedChange={setIsLargeOpened}
+          isPresented={isLargeOpened}
+          onIsPresentedChange={setIsLargeOpened}
           presentationDetents={["large"]}
           presentationDragIndicator="visible"
         >
           <VStack spacing={16}>
-            <Text size={20} weight="bold">
-              Large Sheet
-            </Text>
-            <Text size={14} color="gray">
+            <Text>Large Sheet</Text>
+            <Text>
               This sheet takes up most of the screen. Great for complex forms or
               content.
             </Text>
-            <Text size={14} color="gray">
-              You can scroll down for more content...
-            </Text>
+            <Text>You can scroll down for more content...</Text>
             <Button
               label="Dismiss"
               variant="bordered"
@@ -94,16 +86,14 @@ export function BottomSheetSection() {
 
         {/* Custom Height Sheet */}
         <BottomSheet
-          isOpened={isCustomOpened}
-          onIsOpenedChange={setIsCustomOpened}
+          isPresented={isCustomOpened}
+          onIsPresentedChange={setIsCustomOpened}
           presentationDetents={[0.4, "medium", "large"]}
           presentationDragIndicator="automatic"
         >
           <VStack spacing={16}>
-            <Text size={20} weight="bold">
-              Custom Sheet
-            </Text>
-            <Text size={14} color="gray">
+            <Text>Custom Sheet</Text>
+            <Text>
               This sheet starts at 40% height but can be dragged to medium or
               large.
             </Text>

@@ -14,14 +14,14 @@ const routerTypes = path.join(root, ".expo/types/router.d.ts");
 const appDir = path.join(root, "app");
 
 /** Stale generator output from an old tabs folder name */
-const STALE_MARKERS = ["mobile-core"];
+const STALE_MARKERS = ["caloric", "'/(onboarding)'"];
 
 /** Routes that must appear in generated types (template-literal form) */
 const REQUIRED_MARKERS = [
-  "'/(onboarding)'",
-  "web-viewer",
-  "sign-in",
-  "caloric",
+  "'/(tabs)'",
+  "/mobile-core",
+  "/playground",
+  "/auth",
 ];
 
 function typesLookCurrent() {
