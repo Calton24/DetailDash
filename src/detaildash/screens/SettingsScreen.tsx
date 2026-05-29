@@ -9,24 +9,83 @@ import {
     MapPin,
     Moon,
     Sparkles,
-    Star,
-    User,
+    Star
 } from "lucide-react-native";
-import React, { useState } from "react";
-import { Pressable, ScrollView, Switch, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Alert, Pressable, ScrollView, Switch, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FeatureFlags } from "../../../config/features";
+import { supabase } from "../../utils/supabase";
 import { palette, radii, spacing } from "../theme/tokens";
 import { useDD } from "../theme/useDD";
 import { Avatar } from "../ui/Avatar";
 import { Surface } from "../ui/Surface";
 import { DDText } from "../ui/Text";
 
+function getInitials(fullName?: string | null, email?: string | null): string {
+  if (fullName) {
+    const parts = fullName.trim().split(/\s+/);
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+    return fullName.slice(0, 2).toUpperCase();
+  }
+  if (email) {
+    return email.slice(0, 2).toUpperCase();
+  }
+  return "U";
+}
+
 export default function SettingsScreen() {
   const { theme } = useDD();
   const router = useRouter();
   const [notifications, setNotifications] = useState(true);
   const [darkMode, setDarkMode] = useState(theme.mode === "dark");
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [fullName, setFullName] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadUserProfile();
+  }, []);
+
+  async function loadUserProfile() {
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user) {
+        setLoading(false);
+        return;
+      }
+
+      setUserEmail(user.email ?? null);
+
+      // Load profile data from profiles table
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("full_name")
+        .eq("id", user.id)
+        .maybeSingle();
+
+      setFullName(profile?.full_name ?? null);
+    } catch (error) {
+      console.error("Failed to load user profile:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleSignOut() {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      // User will be redirected by auth state listener
+    } catch (error) {
+      console.error("Sign out failed:", error);
+      Alert.alert("Sign Out Failed", "Please try again.");
+    }
+  }
 
   return (
     <SafeAreaView
@@ -44,39 +103,41 @@ export default function SettingsScreen() {
         </DDText>
 
         {/* Profile card */}
-        <Surface
-          variant="elevated"
-          padding="lg"
-          radius="lg"
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            gap: spacing.md,
-            marginTop: spacing.xl,
-          }}
-        >
-          <Avatar initials="AY" size={56} />
-          <View style={{ flex: 1 }}>
-            <DDText variant="h3">Alex Yen</DDText>
-            <DDText variant="caption" tone="muted">
-              alex@detaildash.app
-            </DDText>
-          </View>
-          <Pressable
-            onPress={() => router.push("/(customer)/profile")}
+        {!loading && userEmail && (
+          <Surface
+            variant="elevated"
+            padding="lg"
+            radius="lg"
             style={{
-              paddingHorizontal: spacing.md,
-              paddingVertical: 6,
-              borderRadius: radii.pill,
-              borderWidth: 1,
-              borderColor: theme.colors.stroke,
+              flexDirection: "row",
+              alignItems: "center",
+              gap: spacing.md,
+              marginTop: spacing.xl,
             }}
           >
-            <DDText variant="micro" tone="brand">
-              EDIT
-            </DDText>
-          </Pressable>
-        </Surface>
+            <Avatar initials={getInitials(fullName, userEmail)} size={56} />
+            <View style={{ flex: 1 }}>
+              <DDText variant="h3">{fullName || "Customer"}</DDText>
+              <DDText variant="caption" tone="muted">
+                {userEmail}
+              </DDText>
+            </View>
+            <Pressable
+              onPress={() => router.push("/(customer)/profile")}
+              style={{
+                paddingHorizontal: spacing.md,
+                paddingVertical: 6,
+                borderRadius: radii.pill,
+                borderWidth: 1,
+                borderColor: theme.colors.stroke,
+              }}
+            >
+              <DDText variant="micro" tone="brand">
+                EDIT
+              </DDText>
+            </Pressable>
+          </Surface>
+        )}
 
         {/* Switch to detailer */}
         <Pressable onPress={() => router.replace("/(detailer)/dashboard")}>
@@ -116,26 +177,25 @@ export default function SettingsScreen() {
         </Pressable>
 
         {/* Sections */}
-        <Section title="Account">
-          <Row
-            icon={<User size={18} color={theme.colors.text} />}
-            label="Personal info"
-          />
-          {FeatureFlags.SHOW_PAYMENT_METHODS && (
-            <Row
-              icon={<CreditCard size={18} color={theme.colors.text} />}
-              label="Payment methods"
-              hint="Visa · 4242"
-            />
-          )}
-          {FeatureFlags.SHOW_SAVED_ADDRESSES && (
-            <Row
-              icon={<MapPin size={18} color={theme.colors.text} />}
-              label="Saved addresses"
-              hint="2 saved"
-            />
-          )}
-        </Section>
+        {FeatureFlags.SHOW_PAYMENT_METHODS ||
+        FeatureFlags.SHOW_SAVED_ADDRESSES ? (
+          <Section title="Account">
+            {FeatureFlags.SHOW_PAYMENT_METHODS && (
+              <Row
+                icon={<CreditCard size={18} color={theme.colors.text} />}
+                label="Payment methods"
+                hint="Visa · 4242"
+              />
+            )}
+            {FeatureFlags.SHOW_SAVED_ADDRESSES && (
+              <Row
+                icon={<MapPin size={18} color={theme.colors.text} />}
+                label="Saved addresses"
+                hint="2 saved"
+              />
+            )}
+          </Section>
+        ) : null}
 
         <Section title="Preferences">
           <Row
@@ -190,6 +250,7 @@ export default function SettingsScreen() {
         <View style={{ marginTop: spacing.xxl }}>
           <Surface variant="muted" padding="lg" radius="lg">
             <Pressable
+              onPress={handleSignOut}
               hitSlop={8}
               style={{
                 flexDirection: "row",

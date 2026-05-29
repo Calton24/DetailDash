@@ -72,12 +72,17 @@ export async function signInWithApple() {
       email: data.user.email,
     });
 
+    // Build full name from Apple credential
+    let fullName: string | undefined;
+    if (credential.fullName?.givenName && credential.fullName?.familyName) {
+      fullName =
+        `${credential.fullName.givenName} ${credential.fullName.familyName}`.trim();
+    } else if (credential.fullName?.givenName) {
+      fullName = credential.fullName.givenName;
+    }
+
     // Upsert profile with customer role
-    await upsertCustomerProfile(
-      data.user.id,
-      data.user.email,
-      credential.fullName
-    );
+    await upsertCustomerProfile(data.user.id, data.user.email, fullName);
 
     return data.user;
   } catch (error) {
@@ -97,40 +102,39 @@ export async function signInWithApple() {
 /**
  * Upsert customer profile after successful authentication
  *
+ * Idempotent - safe to call multiple times.
+ * Creates or updates profile row for authenticated user.
+ * MUST be called before creating bookings to satisfy FK constraint.
+ *
  * @param userId - Supabase auth user ID
- * @param email - User email (may be null if user opted out)
- * @param fullName - Apple full name object (first/last)
+ * @param email - User email (optional)
+ * @param fullName - User's full name (optional, defaults to "Customer")
+ * @throws Error if profile upsert fails
  */
-async function upsertCustomerProfile(
+export async function upsertCustomerProfile(
   userId: string,
-  email: string | undefined,
-  fullName: AppleAuthentication.AppleAuthenticationFullName | null
+  email?: string,
+  fullName?: string | null
 ) {
   try {
-    // Build full name from Apple data if available
-    let displayName = "Customer";
-    if (fullName?.givenName && fullName?.familyName) {
-      displayName = `${fullName.givenName} ${fullName.familyName}`.trim();
-    } else if (fullName?.givenName) {
-      displayName = fullName.givenName;
-    }
+    const displayName = fullName?.trim() || "Customer";
 
     // Check if profile already exists
     const { data: existingProfile } = await supabase
       .from("profiles")
-      .select("full_name")
+      .select("full_name, email, phone, avatar_url")
       .eq("id", userId)
       .maybeSingle();
 
-    // Upsert profile - preserve existing full_name if present
+    // Upsert profile - preserve existing data if present
     const { error } = await supabase.from("profiles").upsert(
       {
         id: userId,
-        email: email ?? "",
+        email: email || existingProfile?.email || "",
         full_name: existingProfile?.full_name || displayName,
         role: "customer",
-        phone: "",
-        avatar_url: null,
+        phone: existingProfile?.phone || "",
+        avatar_url: existingProfile?.avatar_url || null,
       },
       {
         onConflict: "id",
@@ -139,13 +143,15 @@ async function upsertCustomerProfile(
 
     if (error) {
       console.error("Failed to upsert customer profile:", error);
-      // Don't throw - auth succeeded, profile upsert is secondary
-    } else {
-      console.log("Customer profile upserted:", { userId, displayName });
+      throw new Error("Could not prepare customer profile.");
     }
+
+    console.log("Customer profile ready:", userId);
   } catch (error) {
     console.error("upsertCustomerProfile error:", error);
-    // Don't throw - auth succeeded, profile upsert is secondary
+    throw error instanceof Error
+      ? error
+      : new Error("Could not prepare customer profile.");
   }
 }
 

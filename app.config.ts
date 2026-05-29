@@ -131,6 +131,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       // Analytics (PostHog) — static reads so the bundler inlines them
       POSTHOG_API_KEY: process.env.EXPO_PUBLIC_POSTHOG_API_KEY,
       POSTHOG_HOST: process.env.EXPO_PUBLIC_POSTHOG_HOST,
+      // Supabase
+      supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL,
+      supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY,
+      // Stripe
+      stripePublishableKey: process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY,
       eas: {
         projectId: process.env.EAS_PROJECT_ID || "your-eas-project-id",
       },

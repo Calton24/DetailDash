@@ -207,6 +207,7 @@ export const bookingsApi = {
       )
       .eq("detailer_id", detailerId)
       .eq("status", "pending")
+      .eq("payment_status", "deposit_paid")
       .order("created_at", { ascending: false });
 
     if (error) throw error;
@@ -240,9 +241,14 @@ export const bookingsApi = {
   async acceptBooking(bookingId: string, detailerId: string) {
     console.log("Accepting booking:", { bookingId, detailerId });
 
+    const now = new Date().toISOString();
     const { data, error } = await supabase
       .from("bookings")
-      .update({ status: "accepted", updated_at: new Date().toISOString() })
+      .update({
+        status: "accepted",
+        accepted_at: now,
+        updated_at: now,
+      })
       .eq("id", bookingId)
       .eq("detailer_id", detailerId)
       .select()
@@ -271,9 +277,14 @@ export const bookingsApi = {
   async declineBooking(bookingId: string, detailerId: string) {
     console.log("Declining booking:", { bookingId, detailerId });
 
+    const now = new Date().toISOString();
     const { data, error } = await supabase
       .from("bookings")
-      .update({ status: "declined", updated_at: new Date().toISOString() })
+      .update({
+        status: "declined",
+        declined_at: now,
+        updated_at: now,
+      })
       .eq("id", bookingId)
       .eq("detailer_id", detailerId)
       .select()
@@ -302,9 +313,14 @@ export const bookingsApi = {
   async cancelBooking(bookingId: string, customerId: string) {
     console.log("Cancelling booking:", { bookingId, customerId });
 
+    const now = new Date().toISOString();
     const { data, error } = await supabase
       .from("bookings")
-      .update({ status: "cancelled", updated_at: new Date().toISOString() })
+      .update({
+        status: "cancelled",
+        cancelled_at: now,
+        updated_at: now,
+      })
       .eq("id", bookingId)
       .eq("customer_id", customerId)
       .select()
@@ -447,6 +463,8 @@ export const bookingsApi = {
     notes: string;
     totalPence: number;
     depositPence: number;
+    stripePaymentIntentId?: string;
+    paymentStatus?: "unpaid" | "deposit_paid" | "paid" | "refunded" | "failed";
   }) {
     // Calculate platform fee (6%) and detailer payout
     const platformFeePence = Math.round(params.totalPence * 0.06);
@@ -477,12 +495,12 @@ export const bookingsApi = {
           booking_end: null,
           notes: params.notes || null,
           status: "pending",
-          payment_status: "unpaid",
+          payment_status: params.paymentStatus || "unpaid",
           total_pence: params.totalPence,
           deposit_pence: params.depositPence,
           platform_fee_pence: platformFeePence,
           detailer_payout_pence: detailerPayoutPence,
-          stripe_payment_intent_id: null,
+          stripe_payment_intent_id: params.stripePaymentIntentId || null,
           stripe_customer_id: null,
         },
       ])
@@ -498,6 +516,16 @@ export const bookingsApi = {
       params.customerId,
       `Booking created for ${params.vehicleType} at ${params.address}`
     );
+
+    // If deposit was paid, add payment event
+    if (params.paymentStatus === "deposit_paid") {
+      await this.addBookingEvent(
+        booking.id,
+        "deposit_paid",
+        params.customerId,
+        `Customer paid £${(params.depositPence / 100).toFixed(2)} deposit`
+      );
+    }
 
     return booking as Booking;
   },

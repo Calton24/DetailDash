@@ -1,3 +1,5 @@
+import { useStripe } from "@stripe/stripe-react-native";
+import Constants from "expo-constants";
 import { useRouter } from "expo-router";
 import { Apple, CreditCard, Lock, ShieldCheck } from "lucide-react-native";
 import React, { useState } from "react";
@@ -5,7 +7,12 @@ import { Alert, Platform, Pressable, ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { requireTestDetailer } from "../../config/dev";
 import { bookingsApi } from "../../utils/api";
-import { getCurrentUser, signInWithApple } from "../../utils/auth";
+import {
+    getCurrentUser,
+    signInWithApple,
+    upsertCustomerProfile,
+} from "../../utils/auth";
+import { supabase } from "../../utils/supabase";
 import { PriceRow } from "../components/PriceRow";
 import { ScreenHeader } from "../components/ScreenHeader";
 import {
@@ -27,6 +34,7 @@ export default function PaymentScreen() {
   const { theme } = useDD();
   const router = useRouter();
   const draft = useBookingDraft();
+  const { initPaymentSheet, presentPaymentSheet } = useStripe();
   const [method, setMethod] = useState<PayMethod>(
     Platform.OS === "ios" ? "apple" : "card"
   );
@@ -89,9 +97,98 @@ export default function PaymentScreen() {
       // TODO: For MVP, all bookings go to test detailer. In production, use draft.detailer.id
       const detailerId = requireTestDetailer();
 
-      console.log("Creating booking with customer:", customerId);
+      // Ensure customer profile exists before payment
+      // This is required to satisfy bookings.customer_id FK constraint
+      await upsertCustomerProfile(customerId, user.email);
 
-      // Create booking in Supabase
+      console.log("Creating payment intent for customer:", customerId);
+
+      // Create Payment Intent via edge function
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session?.access_token) {
+        throw new Error("No authenticated session");
+      }
+
+      // Debug logging
+      console.log("Session exists:", Boolean(session));
+      console.log("Access token exists:", Boolean(session?.access_token));
+      console.log(
+        "Access token preview:",
+        session.access_token.substring(0, 20) + "..."
+      );
+
+      const supabaseUrl = Constants.expoConfig?.extra?.supabaseUrl;
+      const supabaseAnonKey = Constants.expoConfig?.extra?.supabaseAnonKey;
+      const edgeFunctionUrl = `${supabaseUrl}/functions/v1/create-payment-intent`;
+
+      console.log("Request URL:", edgeFunctionUrl);
+      console.log("Supabase anon key exists:", Boolean(supabaseAnonKey));
+      console.log(
+        "Supabase anon key preview:",
+        supabaseAnonKey?.substring(0, 20) + "..."
+      );
+
+      const response = await fetch(edgeFunctionUrl, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${session.access_token}`,
+          apikey: Constants.expoConfig?.extra?.supabaseAnonKey || "",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          depositPence: totals.depositCents,
+          detailerId,
+          serviceId: draft.service.id,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Edge function error:", errorData);
+        const errorMsg = errorData.debug
+          ? `${errorData.error} - ${errorData.debug}`
+          : errorData.error || "Failed to create payment intent";
+        throw new Error(errorMsg);
+      }
+
+      const { clientSecret, paymentIntentId } = await response.json();
+      console.log("Payment intent created:", paymentIntentId);
+
+      // Initialize Payment Sheet
+      const { error: initError } = await initPaymentSheet({
+        merchantDisplayName: "DetailDash",
+        paymentIntentClientSecret: clientSecret,
+        returnURL: "detaildash://stripe-redirect",
+        defaultBillingDetails: {
+          email: user.email ?? undefined,
+        },
+        allowsDelayedPaymentMethods: false,
+      });
+
+      if (initError) {
+        console.error("Payment sheet init error:", initError);
+        throw new Error("Failed to initialize payment");
+      }
+
+      // Present Payment Sheet
+      const { error: paymentError } = await presentPaymentSheet();
+
+      if (paymentError) {
+        console.error("Payment failed:", paymentError);
+        setSubmitting(false);
+        if (paymentError.code === "Canceled") {
+          // User cancelled payment - silent return
+          return;
+        }
+        throw new Error(paymentError.message || "Payment failed");
+      }
+
+      // Payment successful! Now create booking
+      console.log("Payment successful, creating booking...");
+
       const booking = await bookingsApi.createBookingFromDraft({
         customerId,
         detailerId,
@@ -99,12 +196,14 @@ export default function PaymentScreen() {
         vehicleType: draft.vehicleType,
         vehicleRegistration: draft.vehicleRegistration,
         address: draft.address,
-        city: draft.detailer.city, // Use detailer's city for now
+        city: draft.detailer.city,
         scheduledDate: draft.scheduledDate,
         scheduledTime: draft.scheduledTime,
         notes: draft.notes,
         totalPence: totals.totalCents,
         depositPence: totals.depositCents,
+        stripePaymentIntentId: paymentIntentId,
+        paymentStatus: "deposit_paid",
       });
 
       console.log("Booking created successfully:", booking.id);
@@ -113,13 +212,13 @@ export default function PaymentScreen() {
       bookingDraftStore.reset();
       router.replace(`/booking/success?id=${booking.id}`);
     } catch (error) {
-      console.error("Failed to create booking:", error);
+      console.error("Failed to process booking:", error);
       setSubmitting(false);
       Alert.alert(
         "Booking Failed",
         error instanceof Error
           ? error.message
-          : "Failed to create booking. Please try again.",
+          : "Failed to process payment. Please try again.",
         [{ text: "OK" }]
       );
     }

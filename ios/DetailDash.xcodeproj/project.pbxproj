@@ -7,42 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026B81AF47B14777BAE146EE /* FitnessLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86199760E12744AEBE287A68 /* FitnessLiveActivity.swift */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		37B3AD626DA74B4C9C1F2089 /* MobileCoreActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A035B9EACEFD400DB8E96503 /* MobileCoreActivity.swift */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		58365945D474438CAD134A05 /* MobileCoreWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF5CA985894024A2590795 /* MobileCoreWidgetLiveActivity.swift */; };
-		5C839EEC2197D56A9BC02FEE /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF54EE6333C20E8CE7A8E7D /* ExpoModulesProvider.swift */; };
-		68A511BB1E8C363D47150038 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E5EA6A66D5B13AC9FD1E847B /* PrivacyInfo.xcprivacy */; };
-		6FBBC8E789BC4367931E4199 /* MobileCoreWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF2D159580547F19F019982 /* MobileCoreWidgetBundle.swift */; };
-		74AC6F3236A34EB9BFEAD3C7 /* FitnessLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6731B13BEC94F67BD2D03B0 /* FitnessLiveActivity.swift */; };
-		781DBF537D294C18A62F5796 /* CalorieBudgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876E0CFBC3404121A76C8785 /* CalorieBudgetLiveActivity.swift */; };
-		AE35B9C4AC8A4AEF9F28D367 /* PedometerLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E07C06BA925457F94B55147 /* PedometerLiveActivity.swift */; };
+		445EC0F80E0A46CF8280A977 /* PedometerLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193DA2D206824E16B1A4AE8C /* PedometerLiveActivity.swift */; };
+		5F0337B72149DDCAAB2082FD /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5F7668E5B3A46F9D0AC70880 /* PrivacyInfo.xcprivacy */; };
+		7B6E47655DEE476A8A068EB7 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB0B7E7B6CF4AD6B296D59B /* SwiftUI.framework */; };
+		9259D81B3CD04D24A64A5D20 /* MobileCoreWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E56D7EA08AA1437DA2BD828C /* MobileCoreWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A32D6A1BA81F4FA69C5E42EE /* MobileCoreWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA573BDA90649C78F065F74 /* MobileCoreWidgetLiveActivity.swift */; };
+		BA8A8163A04B4753888276C4 /* MobileCoreWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4E930908F4DEC84F5BBE8 /* MobileCoreWidgetBundle.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		C038296767794263B3A66A4F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9583D4C1749A4C9EA6C4FB66 /* WidgetKit.framework */; };
-		D28C8CAF0C154A66BEC7C102 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B446E9ED294680B678FE8F /* SwiftUI.framework */; };
-		DCA07EA4A21F432BA033B3F9 /* MobileCoreWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EC402921C6C24961BBDB11C8 /* MobileCoreWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E4D10BF102FCA8B63C130DB9 /* libPods-DetailDash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C12386C6C46F077DC9E69BFC /* libPods-DetailDash.a */; };
+		D277115D5D28436C8E729FBB /* CalorieBudgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7129267993F643ABAA18EFFB /* CalorieBudgetLiveActivity.swift */; };
+		DC42319531165DD036D44F48 /* libPods-DetailDash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D33E99A247D566863E4A41F /* libPods-DetailDash.a */; };
+		EE684551197B47F4A25EB574 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BADAF93AAE45A9AE797D4C /* WidgetKit.framework */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
+		F61DBE0B7BA849E780D1046D /* MobileCoreActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82A3E2D157B4BAEBD1709E0 /* MobileCoreActivity.swift */; };
+		FAFDB1BEAF7332C967B8D7B5 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04556E6631AEF4DBA334266 /* ExpoModulesProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		84F22F7E4303452FAC6841F6 /* PBXContainerItemProxy */ = {
+		27D99E67A2AD4F42B8DD0856 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1ACADCA0FADA4C5E82F36387;
+			remoteGlobalIDString = 163E54B24C824F7A81C8DA35;
 			remoteInfo = MobileCoreWidget;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D51E776873DE45C8986DDAFC /* Embed App Extensions */ = {
+		A0FDCF76D1384D419A7B1D96 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				DCA07EA4A21F432BA033B3F9 /* MobileCoreWidget.appex in Embed App Extensions */,
+				9259D81B3CD04D24A64A5D20 /* MobileCoreWidget.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,29 +50,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D33E99A247D566863E4A41F /* libPods-DetailDash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DetailDash.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* DetailDash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DetailDash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = DetailDash/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DetailDash/Info.plist; sourceTree = "<group>"; };
-		2CF2D159580547F19F019982 /* MobileCoreWidgetBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileCoreWidgetBundle.swift; sourceTree = "<group>"; };
-		3ACF5CA985894024A2590795 /* MobileCoreWidgetLiveActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileCoreWidgetLiveActivity.swift; sourceTree = "<group>"; };
-		3D8263CF5BD24136AFCB691C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3E07C06BA925457F94B55147 /* PedometerLiveActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedometerLiveActivity.swift; sourceTree = "<group>"; };
-		6CF54EE6333C20E8CE7A8E7D /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-DetailDash/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		876E0CFBC3404121A76C8785 /* CalorieBudgetLiveActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalorieBudgetLiveActivity.swift; sourceTree = "<group>"; };
-		93B446E9ED294680B678FE8F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		9583D4C1749A4C9EA6C4FB66 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		9726F9A9BBAE69621142E8D5 /* Pods-DetailDash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DetailDash.debug.xcconfig"; path = "Target Support Files/Pods-DetailDash/Pods-DetailDash.debug.xcconfig"; sourceTree = "<group>"; };
-		A035B9EACEFD400DB8E96503 /* MobileCoreActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileCoreActivity.swift; sourceTree = "<group>"; };
+		193DA2D206824E16B1A4AE8C /* PedometerLiveActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedometerLiveActivity.swift; sourceTree = "<group>"; };
+		3C419F40984B4BA58ADAA47E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F7668E5B3A46F9D0AC70880 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = DetailDash/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		61E4E930908F4DEC84F5BBE8 /* MobileCoreWidgetBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileCoreWidgetBundle.swift; sourceTree = "<group>"; };
+		6CA573BDA90649C78F065F74 /* MobileCoreWidgetLiveActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileCoreWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		6EA9DD0C6B85E3638FE9DAA6 /* Pods-DetailDash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DetailDash.debug.xcconfig"; path = "Target Support Files/Pods-DetailDash/Pods-DetailDash.debug.xcconfig"; sourceTree = "<group>"; };
+		7129267993F643ABAA18EFFB /* CalorieBudgetLiveActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalorieBudgetLiveActivity.swift; sourceTree = "<group>"; };
+		7F4C4295F361936664143416 /* Pods-DetailDash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DetailDash.release.xcconfig"; path = "Target Support Files/Pods-DetailDash/Pods-DetailDash.release.xcconfig"; sourceTree = "<group>"; };
+		86199760E12744AEBE287A68 /* FitnessLiveActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLiveActivity.swift; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = DetailDash/SplashScreen.storyboard; sourceTree = "<group>"; };
+		B82A3E2D157B4BAEBD1709E0 /* MobileCoreActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileCoreActivity.swift; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		C12386C6C46F077DC9E69BFC /* libPods-DetailDash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DetailDash.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6731B13BEC94F67BD2D03B0 /* FitnessLiveActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitnessLiveActivity.swift; sourceTree = "<group>"; };
-		E5EA6A66D5B13AC9FD1E847B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = DetailDash/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		EC402921C6C24961BBDB11C8 /* MobileCoreWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MobileCoreWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDB0B7E7B6CF4AD6B296D59B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		E04556E6631AEF4DBA334266 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-DetailDash/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		E1BADAF93AAE45A9AE797D4C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		E56D7EA08AA1437DA2BD828C /* MobileCoreWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MobileCoreWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = DetailDash/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* DetailDash-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DetailDash-Bridging-Header.h"; path = "DetailDash/DetailDash-Bridging-Header.h"; sourceTree = "<group>"; };
-		FF60F1ACCD9C825EEC991F10 /* Pods-DetailDash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DetailDash.release.xcconfig"; path = "Target Support Files/Pods-DetailDash/Pods-DetailDash.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,16 +80,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4D10BF102FCA8B63C130DB9 /* libPods-DetailDash.a in Frameworks */,
+				DC42319531165DD036D44F48 /* libPods-DetailDash.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A7EB024FECFE4B34B8DE7F41 /* Frameworks */ = {
+		62B4078B9AAE48FBA0379469 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C038296767794263B3A66A4F /* WidgetKit.framework in Frameworks */,
-				D28C8CAF0C154A66BEC7C102 /* SwiftUI.framework in Frameworks */,
+				EE684551197B47F4A25EB574 /* WidgetKit.framework in Frameworks */,
+				7B6E47655DEE476A8A068EB7 /* SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,28 +105,28 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				E5EA6A66D5B13AC9FD1E847B /* PrivacyInfo.xcprivacy */,
+				5F7668E5B3A46F9D0AC70880 /* PrivacyInfo.xcprivacy */,
 			);
 			name = DetailDash;
+			sourceTree = "<group>";
+		};
+		20EE1B3AB78D3F5B3897DF51 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6EA9DD0C6B85E3638FE9DAA6 /* Pods-DetailDash.debug.xcconfig */,
+				7F4C4295F361936664143416 /* Pods-DetailDash.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				C12386C6C46F077DC9E69BFC /* libPods-DetailDash.a */,
+				0D33E99A247D566863E4A41F /* libPods-DetailDash.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6B90FE08D8D3339EA3526E21 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9726F9A9BBAE69621142E8D5 /* Pods-DetailDash.debug.xcconfig */,
-				FF60F1ACCD9C825EEC991F10 /* Pods-DetailDash.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -143,9 +143,9 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				A01A59B0165944298A77F46C /* MobileCoreWidget */,
-				6B90FE08D8D3339EA3526E21 /* Pods */,
-				8536BFB9AEE5F56B6BE4CD06 /* ExpoModulesProviders */,
+				9C65C4950B3A4772ABA1A73B /* MobileCoreWidget */,
+				20EE1B3AB78D3F5B3897DF51 /* Pods */,
+				8985DA2162C2FCC16880B456 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -156,37 +156,37 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* DetailDash.app */,
-				EC402921C6C24961BBDB11C8 /* MobileCoreWidget.appex */,
+				E56D7EA08AA1437DA2BD828C /* MobileCoreWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8536BFB9AEE5F56B6BE4CD06 /* ExpoModulesProviders */ = {
+		8985DA2162C2FCC16880B456 /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				ACE695C0A70B7CC20DB07B21 /* DetailDash */,
+				AF71E470F43E9AA3F534E49A /* DetailDash */,
 			);
 			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
-		A01A59B0165944298A77F46C /* MobileCoreWidget */ = {
+		9C65C4950B3A4772ABA1A73B /* MobileCoreWidget */ = {
 			isa = PBXGroup;
 			children = (
-				A035B9EACEFD400DB8E96503 /* MobileCoreActivity.swift */,
-				2CF2D159580547F19F019982 /* MobileCoreWidgetBundle.swift */,
-				3ACF5CA985894024A2590795 /* MobileCoreWidgetLiveActivity.swift */,
-				D6731B13BEC94F67BD2D03B0 /* FitnessLiveActivity.swift */,
-				3E07C06BA925457F94B55147 /* PedometerLiveActivity.swift */,
-				876E0CFBC3404121A76C8785 /* CalorieBudgetLiveActivity.swift */,
-				3D8263CF5BD24136AFCB691C /* Info.plist */,
+				B82A3E2D157B4BAEBD1709E0 /* MobileCoreActivity.swift */,
+				61E4E930908F4DEC84F5BBE8 /* MobileCoreWidgetBundle.swift */,
+				6CA573BDA90649C78F065F74 /* MobileCoreWidgetLiveActivity.swift */,
+				86199760E12744AEBE287A68 /* FitnessLiveActivity.swift */,
+				193DA2D206824E16B1A4AE8C /* PedometerLiveActivity.swift */,
+				7129267993F643ABAA18EFFB /* CalorieBudgetLiveActivity.swift */,
+				3C419F40984B4BA58ADAA47E /* Info.plist */,
 			);
 			path = MobileCoreWidget;
 			sourceTree = "<group>";
 		};
-		ACE695C0A70B7CC20DB07B21 /* DetailDash */ = {
+		AF71E470F43E9AA3F534E49A /* DetailDash */ = {
 			isa = PBXGroup;
 			children = (
-				6CF54EE6333C20E8CE7A8E7D /* ExpoModulesProvider.swift */,
+				E04556E6631AEF4DBA334266 /* ExpoModulesProvider.swift */,
 			);
 			name = DetailDash;
 			sourceTree = "<group>";
@@ -208,32 +208,32 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "DetailDash" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				25376F9761D9E81CF6BE6A19 /* [Expo] Configure project */,
+				459DF16FB7E9488227F26291 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				D51E776873DE45C8986DDAFC /* Embed App Extensions */,
-				3DB2762A086FB55C62CF98BA /* [CP] Embed Pods Frameworks */,
+				A0FDCF76D1384D419A7B1D96 /* Embed App Extensions */,
+				040E5A5E999C1989BC899FE5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				680DCD693BDE4B6287E4ACA4 /* PBXTargetDependency */,
+				66020804424C41768CBF69CF /* PBXTargetDependency */,
 			);
 			name = DetailDash;
 			productName = DetailDash;
 			productReference = 13B07F961A680F5B00A75B9A /* DetailDash.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1ACADCA0FADA4C5E82F36387 /* MobileCoreWidget */ = {
+		163E54B24C824F7A81C8DA35 /* MobileCoreWidget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2934031EA4F2417EA79A4376 /* Build configuration list for PBXNativeTarget "MobileCoreWidget" */;
+			buildConfigurationList = 6059AF8A12FC460988FE9C92 /* Build configuration list for PBXNativeTarget "MobileCoreWidget" */;
 			buildPhases = (
-				C55E1E5CDDEB402EBB1ACD34 /* Sources */,
-				A7EB024FECFE4B34B8DE7F41 /* Frameworks */,
-				1663DC2E38004C45B4E23A31 /* Resources */,
+				B61D8524862B4A1FA5BC4366 /* Sources */,
+				62B4078B9AAE48FBA0379469 /* Frameworks */,
+				BEEED15D2A6048769D3CFA6E /* Resources */,
 			);
 			buildRules = (
 			);
@@ -241,7 +241,7 @@
 			);
 			name = MobileCoreWidget;
 			productName = MobileCoreWidget;
-			productReference = EC402921C6C24961BBDB11C8 /* MobileCoreWidget.appex */;
+			productReference = E56D7EA08AA1437DA2BD828C /* MobileCoreWidget.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -257,7 +257,7 @@
 						DevelopmentTeam = "93HBV58WBY";
 						ProvisioningStyle = Automatic;
 					};
-					1ACADCA0FADA4C5E82F36387 = {
+					163E54B24C824F7A81C8DA35 = {
 						DevelopmentTeam = "93HBV58WBY";
 						ProvisioningStyle = Automatic;
 					};
@@ -277,7 +277,7 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* DetailDash */,
-				1ACADCA0FADA4C5E82F36387 /* MobileCoreWidget */,
+				163E54B24C824F7A81C8DA35 /* MobileCoreWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -290,11 +290,11 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				68A511BB1E8C363D47150038 /* PrivacyInfo.xcprivacy in Resources */,
+				5F0337B72149DDCAAB2082FD /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1663DC2E38004C45B4E23A31 /* Resources */ = {
+		BEEED15D2A6048769D3CFA6E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -321,6 +321,28 @@
 			shellPath = /bin/sh;
 			shellScript = "if [[ -f \"$PODS_ROOT/../.xcode.env\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env\"\nfi\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n# The project root by default is one level up from the ios directory\nexport PROJECT_ROOT=\"$PROJECT_DIR\"/..\n\nif [[ \"$CONFIGURATION\" = *Debug* ]]; then\n  export SKIP_BUNDLING=1\nfi\nif [[ -z \"$ENTRY_FILE\" ]]; then\n  # Set the entry JS file using the bundler's entry resolution.\n  export ENTRY_FILE=\"$(\"$NODE_BINARY\" -e \"require('expo/scripts/resolveAppEntry')\" \"$PROJECT_ROOT\" ios absolute | tail -n 1)\"\nfi\n\nif [[ -z \"$CLI_PATH\" ]]; then\n  # Use Expo CLI\n  export CLI_PATH=\"$(\"$NODE_BINARY\" --print \"require.resolve('@expo/cli', { paths: [require.resolve('expo/package.json')] })\")\"\nfi\nif [[ -z \"$BUNDLE_COMMAND\" ]]; then\n  # Default Expo CLI command for bundling\n  export BUNDLE_COMMAND=\"export:embed\"\nfi\n\n# Source .xcode.env.updates if it exists to allow\n# SKIP_BUNDLING to be unset if needed\nif [[ -f \"$PODS_ROOT/../.xcode.env.updates\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.updates\"\nfi\n# Source local changes to allow overrides\n# if needed\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n`\"$NODE_BINARY\" --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'\"`\n\n";
 		};
+		040E5A5E999C1989BC899FE5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DetailDash/Pods-DetailDash-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DetailDash/Pods-DetailDash-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -343,7 +365,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		25376F9761D9E81CF6BE6A19 /* [Expo] Configure project */ = {
+		459DF16FB7E9488227F26291 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -367,28 +389,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-DetailDash/expo-configure-project.sh\"\n";
 		};
-		3DB2762A086FB55C62CF98BA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DetailDash/Pods-DetailDash-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DetailDash/Pods-DetailDash-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -409,6 +409,14 @@
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Stripe/StripeBundle.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/StripeCore/StripeCoreBundle.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/StripeFinancialConnections/StripeFinancialConnectionsBundle.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/StripePaymentSheet/StripePaymentSheetBundle.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/StripePayments/StripePaymentsBundle.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/StripePayments/Stripe3DS2.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/StripePaymentsUI/StripePaymentsUIBundle.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/StripeUICore/StripeUICoreBundle.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SuperwallKit/SuperwallKit.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -426,6 +434,14 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SDWebImage.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/StripeBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/StripeCoreBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/StripeFinancialConnectionsBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/StripePaymentSheetBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/StripePaymentsBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Stripe3DS2.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/StripePaymentsUIBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/StripeUICoreBundle.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SuperwallKit.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,37 +457,67 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				5C839EEC2197D56A9BC02FEE /* ExpoModulesProvider.swift in Sources */,
+				FAFDB1BEAF7332C967B8D7B5 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C55E1E5CDDEB402EBB1ACD34 /* Sources */ = {
+		B61D8524862B4A1FA5BC4366 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37B3AD626DA74B4C9C1F2089 /* MobileCoreActivity.swift in Sources */,
-				6FBBC8E789BC4367931E4199 /* MobileCoreWidgetBundle.swift in Sources */,
-				58365945D474438CAD134A05 /* MobileCoreWidgetLiveActivity.swift in Sources */,
-				74AC6F3236A34EB9BFEAD3C7 /* FitnessLiveActivity.swift in Sources */,
-				AE35B9C4AC8A4AEF9F28D367 /* PedometerLiveActivity.swift in Sources */,
-				781DBF537D294C18A62F5796 /* CalorieBudgetLiveActivity.swift in Sources */,
+				F61DBE0B7BA849E780D1046D /* MobileCoreActivity.swift in Sources */,
+				BA8A8163A04B4753888276C4 /* MobileCoreWidgetBundle.swift in Sources */,
+				A32D6A1BA81F4FA69C5E42EE /* MobileCoreWidgetLiveActivity.swift in Sources */,
+				026B81AF47B14777BAE146EE /* FitnessLiveActivity.swift in Sources */,
+				445EC0F80E0A46CF8280A977 /* PedometerLiveActivity.swift in Sources */,
+				D277115D5D28436C8E729FBB /* CalorieBudgetLiveActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		680DCD693BDE4B6287E4ACA4 /* PBXTargetDependency */ = {
+		66020804424C41768CBF69CF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1ACADCA0FADA4C5E82F36387 /* MobileCoreWidget */;
-			targetProxy = 84F22F7E4303452FAC6841F6 /* PBXContainerItemProxy */;
+			target = 163E54B24C824F7A81C8DA35 /* MobileCoreWidget */;
+			targetProxy = 27D99E67A2AD4F42B8DD0856 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0BFF9E61C482435EB088EE78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "93HBV58WBY";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MobileCoreWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = com.calton.detaildash.MobileCoreWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				CODE_SIGN_IDENTITY = "Apple Development";
+			};
+			name = Release;
+		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9726F9A9BBAE69621142E8D5 /* Pods-DetailDash.debug.xcconfig */;
+			baseConfigurationReference = 6EA9DD0C6B85E3638FE9DAA6 /* Pods-DetailDash.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -510,7 +556,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF60F1ACCD9C825EEC991F10 /* Pods-DetailDash.release.xcconfig */;
+			baseConfigurationReference = 7F4C4295F361936664143416 /* Pods-DetailDash.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -538,65 +584,6 @@
 				DEVELOPMENT_TEAM = "93HBV58WBY";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-			};
-			name = Release;
-		};
-		182CDFED6C4042DD9450609D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "93HBV58WBY";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MobileCoreWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.calton.detaildash.MobileCoreWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				CODE_SIGN_IDENTITY = "Apple Development";
-			};
-			name = Debug;
-		};
-		8360D0C3D71B44A890732161 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "93HBV58WBY";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MobileCoreWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.calton.detaildash.MobileCoreWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				CODE_SIGN_IDENTITY = "Apple Development";
 			};
 			name = Release;
 		};
@@ -718,6 +705,35 @@
 			};
 			name = Release;
 		};
+		971CD0F80D26484EBAC99D81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "93HBV58WBY";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MobileCoreWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.calton.detaildash.MobileCoreWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				CODE_SIGN_IDENTITY = "Apple Development";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -730,11 +746,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2934031EA4F2417EA79A4376 /* Build configuration list for PBXNativeTarget "MobileCoreWidget" */ = {
+		6059AF8A12FC460988FE9C92 /* Build configuration list for PBXNativeTarget "MobileCoreWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				182CDFED6C4042DD9450609D /* Debug */,
-				8360D0C3D71B44A890732161 /* Release */,
+				971CD0F80D26484EBAC99D81 /* Debug */,
+				0BFF9E61C482435EB088EE78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
