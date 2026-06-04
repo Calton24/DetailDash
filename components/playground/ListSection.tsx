@@ -3,8 +3,8 @@ import {
     List,
     Picker,
     Section,
-    Switch,
     Text,
+    Toggle,
     VStack,
 } from "@expo/ui/swift-ui";
 import React, { useState } from "react";
@@ -60,7 +60,7 @@ export function ListSection() {
           onOptionSelected={(e) => setListStyleIndex(e.nativeEvent.index)}
         />
 
-        <Switch
+        <Toggle
           value={editModeEnabled}
           label="Edit Mode"
           onValueChange={setEditModeEnabled}
@@ -103,9 +103,7 @@ export function ListSection() {
           {`Selected: ${selectedIndices.length > 0 ? selectedIndices.map((i) => items[i]).join(", ") : "None"}`}
         </Text>
 
-        <Button variant="bordered" onPress={resetItems}>
-          Reset List
-        </Button>
+        <Button label="Reset List" variant="bordered" onPress={resetItems} />
       </VStack>
     </Section>
   );

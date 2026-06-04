@@ -1,10 +1,4 @@
-import {
-    DateTimePicker,
-    Picker,
-    Section,
-    Text,
-    VStack,
-} from "@expo/ui/swift-ui";
+import { DatePicker, Picker, Section, Text, VStack } from "@expo/ui/swift-ui";
 import React, { useState } from "react";
 
 export function DateTimeSection() {
@@ -46,16 +40,15 @@ export function DateTimeSection() {
         <Text size={14} color="gray">
           Date Picker
         </Text>
-        <DateTimePicker
+        <DatePicker
           title="Select Date"
-          variant={
-            currentVariant as "automatic" | "compact" | "graphical" | "wheel"
-          }
+          selection={selectedDate || new Date()}
           displayedComponents={
-            currentComponent as "date" | "hourAndMinute" | "dateAndTime"
+            currentComponent === "dateAndTime"
+              ? ["date", "hourAndMinute"]
+              : [currentComponent as "date" | "hourAndMinute"]
           }
-          onDateSelected={(date) => setSelectedDate(date)}
-          color="blue"
+          onDateChange={(date) => setSelectedDate(date)}
         />
 
         <Text size={12} color="gray">

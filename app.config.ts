@@ -11,7 +11,9 @@ const getConfig = (): any => {
   // During build time, we need to load config differently
   // Use process.env directly since Constants.expoConfig isn't available yet
   const appProfile =
-    process.env.EXPO_PUBLIC_APP_PROFILE || process.env.APP_PROFILE || "intake";
+    process.env.EXPO_PUBLIC_APP_PROFILE ||
+    process.env.APP_PROFILE ||
+    "detaildash";
   const appEnv =
     process.env.EXPO_PUBLIC_APP_ENV || process.env.APP_ENV || "dev";
 
@@ -62,6 +64,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     icon: "./assets/images/icon.png",
     scheme: appConfig.scheme,
     userInterfaceStyle: "automatic",
+    // @ts-ignore - newArchEnabled is not in ExpoConfig type yet
     newArchEnabled: true,
 
     ios: {
@@ -114,7 +117,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     ],
 
     experiments: {
-      typedRoutes: true,
+      typedRoutes: false,
     },
 
     // Pass config to runtime via extra
@@ -128,6 +131,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       // Analytics (PostHog) — static reads so the bundler inlines them
       POSTHOG_API_KEY: process.env.EXPO_PUBLIC_POSTHOG_API_KEY,
       POSTHOG_HOST: process.env.EXPO_PUBLIC_POSTHOG_HOST,
+      // Supabase
+      supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL,
+      supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY,
+      // Stripe
+      stripePublishableKey: process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY,
       eas: {
         projectId: process.env.EAS_PROJECT_ID || "your-eas-project-id",
       },

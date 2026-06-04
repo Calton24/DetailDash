@@ -81,7 +81,7 @@ describe("RemoteJsonMaintenanceClient", () => {
     await client.getState();
 
     expect(mockAsyncStorage.setItem).toHaveBeenCalledWith(
-      "@mobile_core/maintenance_state",
+      "@detaildash/maintenance_state",
       expect.stringContaining('"mode":"degraded"')
     );
   });

@@ -1,4 +1,4 @@
-import { Section, Switch, Text, VStack } from "@expo/ui/swift-ui";
+import { Section, Text, Toggle, VStack } from "@expo/ui/swift-ui";
 import React, { useState } from "react";
 
 export function SwitchSection() {
@@ -14,20 +14,20 @@ export function SwitchSection() {
           Switch Variants
         </Text>
 
-        <Switch
+        <Toggle
           value={isEnabled}
           label="Standard Switch"
           onValueChange={setIsEnabled}
         />
 
-        <Switch
+        <Toggle
           value={checkboxValue}
           label="Checkbox Variant"
           variant="checkbox"
           onValueChange={setCheckboxValue}
         />
 
-        <Switch
+        <Toggle
           value={buttonValue}
           label="Button Variant"
           variant="button"
@@ -38,7 +38,7 @@ export function SwitchSection() {
           Colored Switch
         </Text>
 
-        <Switch
+        <Toggle
           value={coloredSwitch}
           label="Green Switch"
           color="green"

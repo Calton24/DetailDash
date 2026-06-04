@@ -220,10 +220,10 @@ export function ExampleProfileLogic() {
 
   // Different UI per app profile
   switch (config.profile) {
-    case "intake":
-      return <IntakeHomePage />;
-
     case "default":
+      return <DefaultHomePage />;
+
+    case "detaildash":
       return <DefaultHomePage />;
 
     default:

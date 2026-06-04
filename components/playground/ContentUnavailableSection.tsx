@@ -20,7 +20,7 @@ export function ContentUnavailableSection() {
       return (
         <VStack spacing={8}>
           <Text size={14}>Content is now available! 🎉</Text>
-          <Button onPress={() => setShowContent(false)}>Hide Content</Button>
+          <Button label="Hide Content" onPress={() => setShowContent(false)} />
         </VStack>
       );
     }
@@ -78,9 +78,11 @@ export function ContentUnavailableSection() {
         {renderUnavailableView()}
 
         {!showContent && (
-          <Button variant="bordered" onPress={() => setShowContent(true)}>
-            Load Content
-          </Button>
+          <Button
+            label="Load Content"
+            variant="bordered"
+            onPress={() => setShowContent(true)}
+          />
         )}
       </VStack>
     </Section>

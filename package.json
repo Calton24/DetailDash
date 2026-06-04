@@ -1,5 +1,5 @@
 {
-  "name": "mobile-core",
+  "name": "detaildash",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -15,8 +15,9 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:edge": "deno test --config supabase/functions/deno.json --allow-env --allow-net supabase/functions/**/*.test.ts",
+    "expo:types": "node scripts/ensure-expo-router-types.mjs",
     "typecheck": "tsc --noEmit",
-    "typecheck:edge": "deno check --config supabase/functions/deno.json supabase/functions/create-checkout-session/index.ts supabase/functions/stripe-webhook/index.ts",
+    "typecheck:edge": "deno check --config supabase/functions/deno.json supabase/functions/create-checkout-session/index.ts supabase/functions/stripe-webhook/index.ts supabase/functions/create-payment-intent/index.ts",
     "check": "npm run typecheck && npm run typecheck:edge",
     "check:edge": "npm run typecheck:edge",
     "validate": "npm run check && npm run lint && npm run test && npm run test:edge",
@@ -41,9 +42,11 @@
     "@react-navigation/bottom-tabs": "^7.4.0",
     "@react-navigation/elements": "^2.6.3",
     "@react-navigation/native": "^7.1.8",
-    "@supabase/supabase-js": "^2.94.1",
+    "@stripe/stripe-react-native": "^0.66.0",
+    "@supabase/supabase-js": "^2.106.0",
     "@superwall/react-native-superwall": "^2.1.7",
     "expo": "~54.0.32",
+    "expo-apple-authentication": "~8.0.8",
     "expo-application": "^7.0.8",
     "expo-blur": "~15.0.8",
     "expo-clipboard": "~8.0.8",
@@ -94,7 +97,8 @@
     "prettier": "^3.4.5",
     "react-test-renderer": "19.1.0",
     "ts-jest": "^29.2.6",
-    "typescript": "~5.9.2"
+    "typescript": "~5.9.2",
+    "ws": "^8.20.1"
   },
   "private": true
 }

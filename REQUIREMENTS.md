@@ -1,6 +1,6 @@
 # Requirements
 
-**Environment setup for mobile-core development.**
+**Environment setup for DetailDash development (forked from [mobile-core](https://github.com/Calton24/mobile-core)).**
 
 ---
 
@@ -50,8 +50,8 @@ curl -Ls "https://get.maestro.mobile.dev" | bash
 npm install -g eas-cli
 
 # 6. Clone and setup
-git clone https://github.com/Calton24/mobile-core.git
-cd mobile-core
+git clone git@github.com:Calton24/DetailDash.git
+cd DetailDash
 npm install --legacy-peer-deps
 
 # 7. Install iOS dependencies

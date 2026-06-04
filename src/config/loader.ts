@@ -69,7 +69,7 @@ function getOptionalEnvVar(
  * Load app profile from environment
  */
 function loadAppProfile(): AppProfile {
-  const profile = getEnvVar("APP_PROFILE", "default"); // Default to default profile
+  const profile = getEnvVar("APP_PROFILE", "detaildash");
   return validateConfig(AppProfileSchema, profile, "APP_PROFILE");
 }
 
