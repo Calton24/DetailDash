@@ -3,6 +3,7 @@ import { Check, Clock } from "lucide-react-native";
 import React, { useState } from "react";
 import { Pressable, ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { BookingProtectionBadge } from "../components/BookingProtectionBadge";
 import { ScreenHeader } from "../components/ScreenHeader";
 import { bookingDraftStore, useBookingDraft } from "../state/bookingDraft";
 import { radii, spacing } from "../theme/tokens";
@@ -59,6 +60,20 @@ export default function ServiceSelectScreen() {
           paddingHorizontal: spacing.lg,
         }}
       >
+        {/* Booking Protection Info */}
+        <Surface
+          variant="muted"
+          padding="md"
+          radius="lg"
+          style={{ marginBottom: spacing.lg }}
+        >
+          <BookingProtectionBadge
+            protectionType={draft.detailer.bookingProtectionType}
+            protectionValue={draft.detailer.bookingProtectionValue}
+            size="sm"
+          />
+        </Surface>
+
         <View style={{ gap: spacing.md }}>
           {services.map((s) => {
             const isSel = selectedId === s.id;

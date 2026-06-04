@@ -51,6 +51,8 @@ export interface Detailer {
   nextSlot: string; // e.g. "Today, 2:30 PM"
   services: DetailerService[];
   yearsExperience: number;
+  bookingProtectionType: "none" | "fixed" | "percentage";
+  bookingProtectionValue: number | null;
 }
 
 export type BookingStatus =

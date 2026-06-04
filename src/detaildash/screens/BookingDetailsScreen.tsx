@@ -10,6 +10,7 @@ import {
 import React, { useState } from "react";
 import { ScrollView, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { BookingProtectionBadge } from "../components/BookingProtectionBadge";
 import { ScreenHeader } from "../components/ScreenHeader";
 import { VEHICLE_TYPES } from "../data/mock";
 import { bookingDraftStore, useBookingDraft } from "../state/bookingDraft";
@@ -167,6 +168,18 @@ export default function BookingDetailsScreen() {
               ${draft.service.priceFrom}+
             </DDText>
           </View>
+          <View
+            style={{
+              height: 1,
+              backgroundColor: theme.colors.stroke,
+              marginVertical: spacing.md,
+            }}
+          />
+          <BookingProtectionBadge
+            protectionType={draft.detailer.bookingProtectionType}
+            protectionValue={draft.detailer.bookingProtectionValue}
+            size="sm"
+          />
         </Surface>
 
         {/* Vehicle */}

@@ -464,7 +464,13 @@ export const bookingsApi = {
     totalPence: number;
     depositPence: number;
     stripePaymentIntentId?: string;
-    paymentStatus?: "unpaid" | "deposit_paid" | "paid" | "refunded" | "failed";
+    paymentStatus?:
+      | "unpaid"
+      | "deposit_paid"
+      | "not_required"
+      | "paid"
+      | "refunded"
+      | "failed";
   }) {
     // Calculate platform fee (6%) and detailer payout
     const platformFeePence = Math.round(params.totalPence * 0.06);

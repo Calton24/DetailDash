@@ -22,6 +22,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FeatureFlags } from "../../../config/features";
 import { detailersApi } from "../../utils/api";
+import { BookingProtectionBadge } from "../components/BookingProtectionBadge";
 import { PriceRow } from "../components/PriceRow";
 import { mapDetailer } from "../data/mappers";
 import { bookingDraftStore } from "../state/bookingDraft";
@@ -240,6 +241,35 @@ export default function DetailerProfileScreen() {
               </View>
             )}
           />
+        </View>
+
+        {/* Booking Protection */}
+        <View style={{ marginTop: spacing.xxl, paddingHorizontal: spacing.lg }}>
+          <SectionHeader title="Booking Protection" />
+          <Surface variant="elevated" padding="lg" radius="lg">
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                gap: spacing.md,
+              }}
+            >
+              <Shield size={24} color={theme.colors.brand} />
+              <View style={{ flex: 1 }}>
+                <BookingProtectionBadge
+                  protectionType={detailer.bookingProtectionType}
+                  protectionValue={detailer.bookingProtectionValue}
+                  size="md"
+                  showIcon={false}
+                />
+                <DDText variant="caption" tone="muted" style={{ marginTop: 4 }}>
+                  {detailer.bookingProtectionType === "none"
+                    ? "Pay the full amount when the service is complete"
+                    : "Deposit secures your booking. Balance due on completion"}
+                </DDText>
+              </View>
+            </View>
+          </Surface>
         </View>
 
         {/* Services */}

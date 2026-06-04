@@ -49,6 +49,8 @@ export interface Detailer {
   longitude: number;
   city: string;
   status: "active" | "inactive" | "suspended";
+  booking_protection_type: "none" | "fixed" | "percentage";
+  booking_protection_value: number | null;
   created_at: string;
 }
 

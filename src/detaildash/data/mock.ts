@@ -97,6 +97,8 @@ export const DETAILERS: Detailer[] = [
     available: true,
     nextSlot: "Today, 2:30 PM",
     yearsExperience: 11,
+    bookingProtectionType: "fixed",
+    bookingProtectionValue: 3000,
     services: [
       {
         id: "d1-s1",
@@ -141,6 +143,8 @@ export const DETAILERS: Detailer[] = [
     available: true,
     nextSlot: "Tomorrow, 9:00 AM",
     yearsExperience: 7,
+    bookingProtectionType: "percentage",
+    bookingProtectionValue: 25,
     services: [
       {
         id: "d2-s1",
@@ -177,6 +181,8 @@ export const DETAILERS: Detailer[] = [
     available: false,
     nextSlot: "Wed, 11:00 AM",
     yearsExperience: 6,
+    bookingProtectionType: "none",
+    bookingProtectionValue: null,
     services: [
       {
         id: "d3-s1",
@@ -213,6 +219,8 @@ export const DETAILERS: Detailer[] = [
     available: true,
     nextSlot: "Today, 7:30 PM",
     yearsExperience: 9,
+    bookingProtectionType: "fixed",
+    bookingProtectionValue: 2000,
     services: [
       {
         id: "d4-s1",
@@ -249,6 +257,8 @@ export const DETAILERS: Detailer[] = [
     available: true,
     nextSlot: "Today, 4:00 PM",
     yearsExperience: 5,
+    bookingProtectionType: "percentage",
+    bookingProtectionValue: 20,
     services: [
       {
         id: "d5-s1",

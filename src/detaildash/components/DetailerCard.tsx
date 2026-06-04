@@ -11,6 +11,7 @@ import { useDD } from "../theme/useDD";
 import type { Detailer } from "../types";
 import { Chip } from "../ui/Chip";
 import { DDText } from "../ui/Text";
+import { BookingProtectionBadge } from "./BookingProtectionBadge";
 
 export interface DetailerCardProps {
   detailer: Detailer;
@@ -90,33 +91,41 @@ export function DetailerCard({
             </DDText>
           </View>
         </View>
-        <View
-          style={{
-            padding: spacing.lg,
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <View style={{ flexDirection: "row", alignItems: "center", gap: 4 }}>
-            <Star
-              size={14}
-              color={theme.colors.warning}
-              fill={theme.colors.warning}
-            />
-            <DDText variant="bodyStrong">{detailer.rating.toFixed(2)}</DDText>
-            {FeatureFlags.SHOW_REVIEWS_COUNT && (
-              <DDText variant="caption" tone="muted">
-                · {detailer.reviewsCount}
+        <View style={{ padding: spacing.lg, gap: spacing.sm }}>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <View
+              style={{ flexDirection: "row", alignItems: "center", gap: 4 }}
+            >
+              <Star
+                size={14}
+                color={theme.colors.warning}
+                fill={theme.colors.warning}
+              />
+              <DDText variant="bodyStrong">{detailer.rating.toFixed(2)}</DDText>
+              {FeatureFlags.SHOW_REVIEWS_COUNT && (
+                <DDText variant="caption" tone="muted">
+                  · {detailer.reviewsCount}
+                </DDText>
+              )}
+            </View>
+            <DDText variant="bodyStrong">
+              From{" "}
+              <DDText tone="brand" weight="700">
+                ${detailer.priceFrom}
               </DDText>
-            )}
-          </View>
-          <DDText variant="bodyStrong">
-            From{" "}
-            <DDText tone="brand" weight="700">
-              ${detailer.priceFrom}
             </DDText>
-          </DDText>
+          </View>
+          <BookingProtectionBadge
+            protectionType={detailer.bookingProtectionType}
+            protectionValue={detailer.bookingProtectionValue}
+            size="sm"
+          />
         </View>
       </Pressable>
     );
@@ -194,26 +203,33 @@ export function DetailerCard({
             </View>
           </View>
         </View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <View>
-            <DDText variant="caption" tone="subtle">
-              From
-            </DDText>
-            <DDText variant="bodyStrong" tone="brand">
-              ${detailer.priceFrom}
-            </DDText>
-          </View>
-          <Chip
-            label={detailer.available ? detailer.nextSlot : "Booked"}
-            tone={detailer.available ? "success" : "warning"}
+        <View style={{ gap: spacing.xs }}>
+          <BookingProtectionBadge
+            protectionType={detailer.bookingProtectionType}
+            protectionValue={detailer.bookingProtectionValue}
             size="sm"
           />
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <View>
+              <DDText variant="caption" tone="subtle">
+                From
+              </DDText>
+              <DDText variant="bodyStrong" tone="brand">
+                ${detailer.priceFrom}
+              </DDText>
+            </View>
+            <Chip
+              label={detailer.available ? detailer.nextSlot : "Booked"}
+              tone={detailer.available ? "success" : "warning"}
+              size="sm"
+            />
+          </View>
         </View>
       </View>
     </Pressable>

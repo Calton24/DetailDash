@@ -116,6 +116,8 @@ export function mapDetailer(
     nextSlot: getNextSlot(),
     services,
     yearsExperience: detailer.years_experience,
+    bookingProtectionType: detailer.booking_protection_type,
+    bookingProtectionValue: detailer.booking_protection_value,
   };
 }
 

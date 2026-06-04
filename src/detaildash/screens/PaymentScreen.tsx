@@ -2,7 +2,7 @@ import { useStripe } from "@stripe/stripe-react-native";
 import Constants from "expo-constants";
 import { useRouter } from "expo-router";
 import { Apple, CreditCard, Lock, ShieldCheck } from "lucide-react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, Platform, Pressable, ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { requireTestDetailer } from "../../config/dev";
@@ -27,6 +27,7 @@ import { DDButton } from "../ui/Button";
 import { ErrorState } from "../ui/ErrorState";
 import { Surface } from "../ui/Surface";
 import { DDText } from "../ui/Text";
+import { calculateDeposit } from "../utils/deposit";
 
 type PayMethod = "apple" | "card";
 
@@ -39,6 +40,42 @@ export default function PaymentScreen() {
     Platform.OS === "ios" ? "apple" : "card"
   );
   const [submitting, setSubmitting] = useState(false);
+  const [detailerProtection, setDetailerProtection] = useState<{
+    type: "none" | "fixed" | "percentage";
+    value: number | null;
+  } | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch detailer's booking protection settings
+  useEffect(() => {
+    const fetchProtectionSettings = async () => {
+      if (!draft.detailer) return;
+
+      try {
+        const detailerId = requireTestDetailer();
+        const { data, error } = await supabase
+          .from("detailers")
+          .select("booking_protection_type, booking_protection_value")
+          .eq("id", detailerId)
+          .single();
+
+        if (error) throw error;
+
+        setDetailerProtection({
+          type: data.booking_protection_type,
+          value: data.booking_protection_value,
+        });
+      } catch (error) {
+        console.error("Failed to fetch protection settings:", error);
+        // Default to fixed £30 if fetch fails (backward compatible)
+        setDetailerProtection({ type: "fixed", value: 3000 });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    void fetchProtectionSettings();
+  }, [draft.detailer]);
 
   if (!draft.detailer || !draft.service || !draft.vehicleType) {
     return (
@@ -56,7 +93,23 @@ export default function PaymentScreen() {
     );
   }
 
+  if (loading || !detailerProtection) {
+    return (
+      <SafeAreaView
+        style={{ flex: 1, backgroundColor: theme.colors.bg }}
+        edges={["top"]}
+      >
+        <ScreenHeader title="Payment" subtitle="Loading..." />
+      </SafeAreaView>
+    );
+  }
+
   const totals = getEstimatedTotalCents(draft);
+  const depositInfo = calculateDeposit(
+    totals.totalCents,
+    detailerProtection.type,
+    detailerProtection.value
+  );
 
   const handleConfirm = async () => {
     if (!draft.detailer || !draft.service || !draft.vehicleType) return;
@@ -97,11 +150,46 @@ export default function PaymentScreen() {
       // TODO: For MVP, all bookings go to test detailer. In production, use draft.detailer.id
       const detailerId = requireTestDetailer();
 
-      // Ensure customer profile exists before payment
+      // Ensure customer profile exists
       // This is required to satisfy bookings.customer_id FK constraint
       await upsertCustomerProfile(customerId, user.email);
 
-      console.log("Creating payment intent for customer:", customerId);
+      let paymentIntentId: string | undefined;
+
+      // CASE 1: No deposit required - create booking immediately
+      if (!depositInfo.requiresPayment) {
+        console.log("No deposit required, creating booking directly...");
+
+        const booking = await bookingsApi.createBookingFromDraft({
+          customerId,
+          detailerId,
+          serviceId: draft.service.id,
+          vehicleType: draft.vehicleType,
+          vehicleRegistration: draft.vehicleRegistration,
+          address: draft.address,
+          city: draft.detailer.city,
+          scheduledDate: draft.scheduledDate,
+          scheduledTime: draft.scheduledTime,
+          notes: draft.notes,
+          totalPence: totals.totalCents,
+          depositPence: 0,
+          stripePaymentIntentId: undefined,
+          paymentStatus: "not_required",
+        });
+
+        console.log("Booking created successfully:", booking.id);
+
+        // Success: clear draft and navigate to success page
+        bookingDraftStore.reset();
+        router.replace(`/booking/success?id=${booking.id}`);
+        return;
+      }
+
+      // CASE 2 & 3: Fixed or Percentage deposit - collect payment first
+      console.log(
+        `Deposit required: ${depositInfo.displayText}, creating payment intent for customer:`,
+        customerId
+      );
 
       // Create Payment Intent via edge function
       const {
@@ -112,24 +200,9 @@ export default function PaymentScreen() {
         throw new Error("No authenticated session");
       }
 
-      // Debug logging
-      console.log("Session exists:", Boolean(session));
-      console.log("Access token exists:", Boolean(session?.access_token));
-      console.log(
-        "Access token preview:",
-        session.access_token.substring(0, 20) + "..."
-      );
-
       const supabaseUrl = Constants.expoConfig?.extra?.supabaseUrl;
       const supabaseAnonKey = Constants.expoConfig?.extra?.supabaseAnonKey;
       const edgeFunctionUrl = `${supabaseUrl}/functions/v1/create-payment-intent`;
-
-      console.log("Request URL:", edgeFunctionUrl);
-      console.log("Supabase anon key exists:", Boolean(supabaseAnonKey));
-      console.log(
-        "Supabase anon key preview:",
-        supabaseAnonKey?.substring(0, 20) + "..."
-      );
 
       const response = await fetch(edgeFunctionUrl, {
         method: "POST",
@@ -139,7 +212,7 @@ export default function PaymentScreen() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          depositPence: totals.depositCents,
+          depositPence: depositInfo.depositPence,
           detailerId,
           serviceId: draft.service.id,
         }),
@@ -154,7 +227,9 @@ export default function PaymentScreen() {
         throw new Error(errorMsg);
       }
 
-      const { clientSecret, paymentIntentId } = await response.json();
+      const { clientSecret, paymentIntentId: paymentId } =
+        await response.json();
+      paymentIntentId = paymentId;
       console.log("Payment intent created:", paymentIntentId);
 
       // Initialize Payment Sheet
@@ -166,6 +241,9 @@ export default function PaymentScreen() {
           email: user.email ?? undefined,
         },
         allowsDelayedPaymentMethods: false,
+        applePay: {
+          merchantCountryCode: "GB", // UK for GBP currency
+        },
       });
 
       if (initError) {
@@ -201,7 +279,7 @@ export default function PaymentScreen() {
         scheduledTime: draft.scheduledTime,
         notes: draft.notes,
         totalPence: totals.totalCents,
-        depositPence: totals.depositCents,
+        depositPence: depositInfo.depositPence,
         stripePaymentIntentId: paymentIntentId,
         paymentStatus: "deposit_paid",
       });
@@ -298,39 +376,54 @@ export default function PaymentScreen() {
                 value={formatCents(totals.totalCents)}
                 emphasis
               />
-              <PriceRow
-                label="Deposit due today"
-                value={formatCents(totals.depositCents)}
-                tone="success"
-              />
+              {depositInfo.requiresPayment ? (
+                <>
+                  <PriceRow
+                    label="Deposit due today"
+                    value={formatCents(depositInfo.depositPence)}
+                    tone="success"
+                  />
+                  <PriceRow
+                    label="Balance due on completion"
+                    value={formatCents(
+                      totals.totalCents - depositInfo.depositPence
+                    )}
+                    tone="muted"
+                  />
+                </>
+              ) : (
+                <PriceRow label="Deposit" value="Not required" tone="success" />
+              )}
             </View>
           </Surface>
         </View>
 
-        {/* Payment method */}
-        <View>
-          <DDText variant="bodyStrong" style={{ marginBottom: spacing.sm }}>
-            Payment method
-          </DDText>
-          <View style={{ gap: spacing.sm }}>
-            {Platform.OS === "ios" && (
+        {/* Payment method - only show if payment required */}
+        {depositInfo.requiresPayment && (
+          <View>
+            <DDText variant="bodyStrong" style={{ marginBottom: spacing.sm }}>
+              Payment method
+            </DDText>
+            <View style={{ gap: spacing.sm }}>
+              {Platform.OS === "ios" && (
+                <PayOption
+                  selected={method === "apple"}
+                  onPress={() => setMethod("apple")}
+                  icon={<Apple size={20} color={theme.colors.text} />}
+                  title="Apple Pay"
+                  subtitle="Use Face ID to pay securely"
+                />
+              )}
               <PayOption
-                selected={method === "apple"}
-                onPress={() => setMethod("apple")}
-                icon={<Apple size={20} color={theme.colors.text} />}
-                title="Apple Pay"
-                subtitle="Use Face ID to pay securely"
+                selected={method === "card"}
+                onPress={() => setMethod("card")}
+                icon={<CreditCard size={20} color={theme.colors.text} />}
+                title="Card ending 4242"
+                subtitle="Visa · Default"
               />
-            )}
-            <PayOption
-              selected={method === "card"}
-              onPress={() => setMethod("card")}
-              icon={<CreditCard size={20} color={theme.colors.text} />}
-              title="Card ending 4242"
-              subtitle="Visa · Default"
-            />
+            </View>
           </View>
-        </View>
+        )}
 
         {/* Trust */}
         <Surface
@@ -345,9 +438,15 @@ export default function PaymentScreen() {
         >
           <ShieldCheck size={22} color={theme.colors.success} />
           <View style={{ flex: 1 }}>
-            <DDText variant="bodyStrong">Protected checkout</DDText>
+            <DDText variant="bodyStrong">
+              {depositInfo.requiresPayment
+                ? "Protected checkout"
+                : "Secure booking"}
+            </DDText>
             <DDText variant="caption" tone="muted">
-              Card details encrypted by Stripe. Deposit held until job complete.
+              {depositInfo.requiresPayment
+                ? "Card details encrypted by Stripe. Deposit held until job complete."
+                : "Your booking is protected. Pay the full amount when the service is complete."}
             </DDText>
           </View>
         </Surface>
@@ -381,7 +480,11 @@ export default function PaymentScreen() {
             </Pressable>
           ) : (
             <DDButton
-              label="Create booking request"
+              label={
+                depositInfo.requiresPayment
+                  ? `Pay ${formatCents(depositInfo.depositPence)} deposit`
+                  : "Confirm booking"
+              }
               fullWidth
               loading={submitting}
               onPress={handleConfirm}
@@ -389,7 +492,9 @@ export default function PaymentScreen() {
             />
           )}
           <DDText variant="micro" tone="subtle" align="center">
-            Creates a pending booking. Payment integration coming next.
+            {depositInfo.requiresPayment
+              ? `Secure deposit payment • Balance due on completion`
+              : "No deposit required • Pay on completion"}
           </DDText>
         </View>
       </SafeAreaView>

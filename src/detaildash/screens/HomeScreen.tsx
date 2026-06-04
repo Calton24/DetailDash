@@ -16,7 +16,10 @@ import {
     TextInput,
     View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+    SafeAreaView,
+    useSafeAreaInsets,
+} from "react-native-safe-area-context";
 import { detailersApi } from "../../utils/api";
 import { DetailerCard } from "../components/DetailerCard";
 import { ServiceCategoryTile } from "../components/ServiceCategoryTile";
@@ -37,6 +40,7 @@ type LoadState = "loading" | "ready" | "error";
 export default function HomeScreen() {
   const { theme } = useDD();
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const [loadState, setLoadState] = useState<LoadState>("loading");
   const [refreshing, setRefreshing] = useState(false);
   const [detailers, setDetailers] = useState<Detailer[]>([]);
@@ -97,7 +101,9 @@ export default function HomeScreen() {
       style={{ flex: 1, backgroundColor: theme.colors.bg }}
     >
       <ScrollView
-        contentContainerStyle={{ paddingBottom: spacing.huge }}
+        contentContainerStyle={{
+          paddingBottom: spacing.huge + 88 + insets.bottom,
+        }}
         showsVerticalScrollIndicator={false}
         refreshControl={
           <RefreshControl
@@ -297,7 +303,7 @@ export default function HomeScreen() {
             {
               backgroundColor: theme.colors.brand,
               opacity: pressed ? 0.9 : 1,
-              bottom: spacing.lg,
+              bottom: 88 + insets.bottom + spacing.md,
             },
           ]}
         >
